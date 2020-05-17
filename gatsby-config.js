@@ -19,8 +19,8 @@ module.exports = {
       resolve: 'gatsby-source-microcms',
       options: {
         apiKey: process.env.GATSBY_MICROCMS_API_KEY,
-        serviceId: process.env.GATSBY_MICROCMS_ID,
-        endpoint: process.env.GATSBY_MICROCMS_ENDPOINT,
+        serviceId: 'bearwebapps',
+        endpoint: 'posts',
       },
     },
     {
