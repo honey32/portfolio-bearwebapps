@@ -18,9 +18,9 @@ const Post: React.FC<PostInfo> = p => (
 )
 
 const App: React.FC<AppInfo> = a => (
-    <div key={a.name}>
-        <h3><a href={a.url} target="_blank">{a.name}</a></h3>
-        <div>{a.description}</div>
+    <div className={style.item} key={a.name}>
+        <h3 className={style.title}><a href={a.url} target="_blank">{a.name}</a></h3>
+        <div className={style.description}>{a.description}</div>
     </div>
 )
 
@@ -29,18 +29,24 @@ export default (p: any) => {
     return (
         <div>
             <h1>Honey32 bear web apps</h1>
-            <div>
-                <h2>作成したアプリ</h2>
-                <div>{
-                    apps.map(App)
-                }</div>
+            <div className={style.wrap}>
+                { /* Apps */ }
+                <div className={style.apps}>
+                    <h2 className={style.heading}>作成したアプリ</h2>
+                    <div className={style.list}>{
+                        apps.map(App)
+                    }</div>
+                </div>
+                { /* Posts */ }
+                <div className={style.recentPosts}>
+                    <h2 className={style.heading}>最近の投稿</h2>
+                    <div className={style.list}>{
+                        posts.map(p => p.node).map(Post)
+                    }</div>
+                </div>
             </div>
-            <div className={style.recentPosts}>
-                <h2 className={style.heading}>最近の投稿</h2>
-                <div className={style.list}>{
-                    posts.map(p => p.node).map(Post)
-                }</div>
-            </div>
+            
+            
         </div>)
 }
 
