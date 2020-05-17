@@ -1,5 +1,6 @@
 require('ts-node').register({
     compilerOptions: {
+        esModuleInterop: true,
         module: 'commonjs',
         target: 'esnext'
     }
