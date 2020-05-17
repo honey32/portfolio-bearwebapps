@@ -1,6 +1,8 @@
 name: firebase deploy
 
 on:
+  repository_dispatch:
+      types: [post]
   push:
     branches:
       - master
