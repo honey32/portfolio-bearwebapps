@@ -10,32 +10,14 @@ import remark2rehype from 'remark-rehype'
 import html_out from 'rehype-stringify'
 
 export const createPages: GatsbyNode['createPages'] = async (args, opts, cb) => {
-    const result = await args.graphql<AllPosts<FullPost>, any>(`
-        {
-            allMicrocmsPosts(sort: {fields: [createdAt], order: ASC}) {
-                edges {
-                    node {
-                        id
-                        createdAt
-                        title
-                        exerpt
-                        content
-                    }
-                }
-            }
-        }
-    `)
+    const result = await args.graphql<AllPosts<FullPost>, any>(allPostsQuery)
     if (result.errors) {
         args.reporter.panicOnBuild(`Error while running GraphQL query.`)
         return
     }
     const posts: {node: FullPost}[] = result.data.allMicrocmsPosts.edges
     try {
-        const transformer = unified()
-            .use(markdown_in)
-            .use(slug)
-            .use(remark2rehype)
-            .use(html_out as unknown as any)
+        const transformer = makeMd2HtmlConvertor()
         posts.forEach(async (p, idx) => {
             const result = await transformer.process(p.node.content)
             args.actions.createPage({
@@ -52,4 +34,27 @@ export const createPages: GatsbyNode['createPages'] = async (args, opts, cb) => 
         args.reporter.panicOnBuild(`Error while creating page.`)
     }
     
+}
+
+const allPostsQuery = `
+{
+    allMicrocmsPosts(sort: {fields: [createdAt], order: ASC}) {
+        edges {
+            node {
+                id
+                createdAt
+                title
+                exerpt
+                content
+            }
+        }
+    }
+}`
+
+function makeMd2HtmlConvertor() {
+    return unified()
+        .use(markdown_in)
+        .use(slug)
+        .use(remark2rehype)
+        .use(html_out as unknown as any)
 }
