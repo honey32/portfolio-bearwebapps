@@ -24,6 +24,7 @@ jobs:
         path: public
   deploy:
     name: Deploy
+    needs: build
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
