@@ -50,7 +50,7 @@ module.exports = {
                           id
                           createdAt
                           title
-                          bibletext
+                          exerpt
                           content
                       }
                   }
