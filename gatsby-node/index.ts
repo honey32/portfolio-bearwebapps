@@ -15,7 +15,7 @@ export const createPages: GatsbyNode['createPages'] = async (args, opts, cb) => 
                         id
                         createdAt
                         title
-                        bibletext
+                        exerpt
                         content
                     }
                 }
