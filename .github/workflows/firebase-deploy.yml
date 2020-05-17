@@ -17,6 +17,8 @@ jobs:
         node-version: '12.x'
     - run: npm install
     - run: npm run build --if-present
+      env:
+        GATSBY_MICROCMS_API_KEY: ${{ secrets.GATSBY_MICROCMS_API_KEY }}
     - name: Archive Production Artifact
       uses: actions/upload-artifact@master
       with:
