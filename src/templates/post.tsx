@@ -14,7 +14,6 @@ export default (props: { pageContext: { post: FullPost, prevPost?: FullPost, nex
                 <Link to="/">トップページに戻る</Link>
                 <h1 className={style.title}>{post.title}</h1>
                 <div className={style.date}><Date dateTime={post.createdAt} format={{date: true, time: true}}/></div>
-                <div className={style.exerpt} dangerouslySetInnerHTML={{__html: post.exerpt}}></div>
                 <div className={style.content} dangerouslySetInnerHTML={{__html: post.content}}></div>
                 <PrevAndNext prev={props.pageContext.prevPost} next={props.pageContext.nextPost}></PrevAndNext>
             </div>
