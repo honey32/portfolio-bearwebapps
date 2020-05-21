@@ -29,6 +29,7 @@ module.exports = {
         feeds: [
           {
             output: '/feed.xml',
+            title: 'Honey32 Bear Web App Feed',
             serialize: ({ query: { site, allMicrocmsPosts } }) => {
               return allMicrocmsPosts.edges.map(edge => {
                 const post = edge.node
