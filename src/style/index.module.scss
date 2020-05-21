@@ -1,7 +1,18 @@
 
-h1 {
-    margin: 0;
-    padding: 2rem 2rem;
+
+.header {
+    .site_name {
+        margin: 0;
+        padding: 2rem 2rem 1rem;
+    }
+
+    .socials {
+        padding: 0 2rem 2rem;
+
+        .item {
+            margin-inline-end: 1rem;
+        }
+    }
 }
 
 .wrap {

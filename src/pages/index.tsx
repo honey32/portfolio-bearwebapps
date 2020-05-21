@@ -32,12 +32,33 @@ const App: React.FC<AppInfo> = a => (
     </div>
 )
 
+const Socials = () => {
+    const items = [
+        { url: "https://github.com/honey32", title: "Github" },
+        { url: "https://twitter.com/honey32bearweb1", title: "Twitter" },
+    ]
+    const Item: React.FC<(typeof items)[number]> = (_) => (
+        <a href={_.url} target="_blank" className={style.item} data-type={_.title}>
+            {_.title}
+        </a>
+    ) 
+    return (
+        <div className={style.socials}>
+            { items.map(Item) }
+        </div>
+    )
+}
+
 export default (p: any) => {
     const posts: {node: PostInfo}[] = p.data.allMicrocmsPosts.edges
     return (
         <div>
             <Head/>
-            <h1>Honey32 bear web apps</h1>
+            <div className={style.header}>
+                <h1 className={style.site_name}>Honey32 bear web apps</h1>
+                <Socials/>
+            </div>
+            
             <div className={style.wrap}>
                 { /* Apps */ }
                 <div className={style.apps}>
