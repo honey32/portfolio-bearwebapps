@@ -63,5 +63,6 @@ module.exports = {
     },
     'gatsby-plugin-robots-txt',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-react-helmet',
   ]
 }
