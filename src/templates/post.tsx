@@ -5,11 +5,20 @@ import { Link } from "gatsby"
 import { Date } from "../components/date"
 import { PostLink } from "../components/link"
 import { boolAttr } from "../util/attributes"
+import { Helmet } from "react-helmet"
+
+const Head: React.FC<{title: string}> = (props) => (
+    <Helmet>
+        <meta charSet="utf-8"/>
+        <title>{props.title} | Bear Web Apps</title>
+    </Helmet>
+)
 
 export default (props: { pageContext: { post: FullPost, prevPost?: FullPost, nextPost?: FullPost }}) => {
     const { post } = props.pageContext
     return (
         <div className={style.page}>
+            <Head title={post.title} />
             <div className={style.main}>
                 <Link to="/">トップページに戻る</Link>
                 <h1 className={style.title}>{post.title}</h1>
