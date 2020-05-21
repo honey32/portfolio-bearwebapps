@@ -18,18 +18,20 @@ export const createPages: GatsbyNode['createPages'] = async (args, opts, cb) => 
     const posts: {node: FullPost}[] = result.data.allMicrocmsPosts.edges
     try {
         const transformer = makeMd2HtmlConvertor()
-        posts.forEach(async (p, idx) => {
-            const result = await transformer.process(p.node.content)
-            args.actions.createPage({
-                path: getLinkForPost(p.node),
-                component: resolve('./src/templates/post.tsx'), // origin is set in tricky path.
-                context: {
-                    post: { ...p.node, content: result.contents },
-                    prevPost: idx > 0 ? posts[idx - 1].node : undefined,
-                    nextPost: idx + 1 < posts.length ? posts[idx + 1].node : undefined
-                }
+        await Promise.all(
+            posts.map(async (p, idx) => {
+                const result = await transformer.process(p.node.content)
+                return args.actions.createPage({
+                    path: getLinkForPost(p.node),
+                    component: resolve('./src/templates/post.tsx'), // origin is set in tricky path.
+                    context: {
+                        post: { ...p.node, content: result.contents },
+                        prevPost: idx > 0 ? posts[idx - 1].node : undefined,
+                        nextPost: idx + 1 < posts.length ? posts[idx + 1].node : undefined
+                    }
+                })
             })
-        })
+        )
     } catch(e) {
         args.reporter.panicOnBuild(`Error while creating page.`)
     }
