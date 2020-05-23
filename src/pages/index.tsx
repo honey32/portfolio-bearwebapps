@@ -55,7 +55,7 @@ export default (p: any) => {
         <div>
             <Head/>
             <div className={style.header}>
-                <h1 className={style.site_name}>Honey32 bear web apps</h1>
+                <h1 className={style.site_name}>Honey32 Bear Web Apps</h1>
                 <Socials/>
             </div>
             

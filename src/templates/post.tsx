@@ -20,7 +20,7 @@ export default (props: { pageContext: { post: FullPost, prevPost?: FullPost, nex
         <div className={style.page}>
             <Head title={post.title} />
             <div className={style.main}>
-                <Link to="/">トップページに戻る</Link>
+                <Link to="/" className={style.back2top}>Honey32 Bear Web Apps</Link>
                 <h1 className={style.title}>{post.title}</h1>
                 <div className={style.date}><Date dateTime={post.createdAt} format={{date: true, time: true}}/></div>
                 <div className={style.content} dangerouslySetInnerHTML={{__html: post.content}}></div>
