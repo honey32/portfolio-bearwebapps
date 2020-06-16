@@ -51,13 +51,15 @@
 
         ul, ol {
             margin-left: 1rem;
-            padding-inline-start: 2rem;
+            margin-right: 1rem;
         }
+
         p, pre {
             padding: 0 2rem;
         }
 
         pre {
+            overflow-x: scroll;
             background-color: #f0f0f0;
             padding: 1rem 2rem 1.2rem;
             margin: 1.5rem 0;
@@ -65,6 +67,21 @@
 
         pre > code {
             font-size: 1rem;
+        }
+    }
+
+    @media screen and(max-width: 500px){
+        .main {
+            padding: 2rem 0;
+        }
+        .content {
+            pre {
+                margin: 1.5rem 0;
+            }
+            ul, ol {
+                margin-left: 0;
+                margin-right: 0;
+            }
         }
     }
 
@@ -79,6 +96,7 @@
             background-color: #fafafa;
             box-shadow: 0 0 4px rgba(0,0,0, .2);
             border-radius: 4px;
+            margin: 4rem 1rem 0;
 
             .button {
                 padding: 1rem 0.5rem;
