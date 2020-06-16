@@ -36,6 +36,7 @@ const Socials = () => {
     const items = [
         { url: "https://github.com/honey32", title: "Github" },
         { url: "https://twitter.com/honey32bearweb1", title: "Twitter" },
+        { url: "/feed.xml", title: "Feed" },
     ]
     const Item: React.FC<(typeof items)[number]> = (_) => (
         <a href={_.url} target="_blank" className={style.item} data-type={_.title}>
