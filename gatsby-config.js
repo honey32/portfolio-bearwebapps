@@ -24,6 +24,12 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-html-attributes',
+      options: {
+        lang: 'ja'
+      }
+    },
+    {
       resolve: 'gatsby-plugin-feed',
       options: {
         feeds: [
